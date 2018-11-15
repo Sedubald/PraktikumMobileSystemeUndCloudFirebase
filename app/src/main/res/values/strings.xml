@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BitsPleasePraktikumFirebase</string>
+    <string name="please_sign_in">Please sign in with your Google account!</string>
+    <string name="welcome">Welcome</string>
+    <string name="account_id">Account ID:</string>
+    <string name="logout">Logout</string>
+</resources>
