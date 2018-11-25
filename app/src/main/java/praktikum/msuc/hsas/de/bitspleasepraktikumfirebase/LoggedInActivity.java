@@ -1,6 +1,5 @@
 package praktikum.msuc.hsas.de.bitspleasepraktikumfirebase;
 
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 public class LoggedInActivity extends AppCompatActivity implements View.OnClickListener {
@@ -28,13 +28,10 @@ public class LoggedInActivity extends AppCompatActivity implements View.OnClickL
 
         if(account.getPhotoUrl() != null){
             ImageView ivProfileImage = findViewById(R.id.iv_image);
-            Uri uri = account.getPhotoUrl();
 
-            try {
-                new DownloadImageTask(ivProfileImage).execute(uri.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Glide.with(getApplicationContext())
+                    .load(account.getPhotoUrl())
+                    .into(ivProfileImage);
         }
 
         Button clickButton = findViewById(R.id.btn_logout);
@@ -44,7 +41,7 @@ public class LoggedInActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.btn_logout){
-            finishActivity(0);
+            finish();
         }
     }
 }
