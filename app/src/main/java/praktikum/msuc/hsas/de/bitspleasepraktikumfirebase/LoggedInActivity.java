@@ -2,13 +2,15 @@ package praktikum.msuc.hsas.de.bitspleasepraktikumfirebase;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 
 public class LoggedInActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,11 +29,14 @@ public class LoggedInActivity extends AppCompatActivity implements View.OnClickL
         tvAccountId.setText(account.getId());
 
         if(account.getPhotoUrl() != null){
-            ImageView ivProfileImage = findViewById(R.id.iv_image);
-
-            Glide.with(getApplicationContext())
-                    .load(account.getPhotoUrl())
-                    .into(ivProfileImage);
+            ImageView iv_profilePic = findViewById(R.id.iv_image);
+            Log.d("Imagepath:", "path: " + account.getPhotoUrl());
+            //Download and set profile pic to ImageView
+            Object[] object=new Object[2];
+            object[0] = iv_profilePic;
+            object[1] = account.getPhotoUrl();
+            DownloadProfilePicTask dppt = new DownloadProfilePicTask();
+            dppt.execute(object);
         }
 
         Button clickButton = findViewById(R.id.btn_logout);
@@ -44,4 +49,9 @@ public class LoggedInActivity extends AppCompatActivity implements View.OnClickL
             finish();
         }
     }
+
+
+
+
 }
+
