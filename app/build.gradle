@@ -2,12 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        config {
-            keyAlias 'praktikum'
-            keyPassword 'praktikum'
-            storePassword 'praktikum'
-            storeFile file('/home/michael/Entwicklung/GitHub/keystorepraktikum.jks')
-        }
     }
     compileSdkVersion 26
     defaultConfig {
@@ -22,10 +16,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
         }
         debug {
-            signingConfig signingConfigs.config
         }
     }
 }

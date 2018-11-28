@@ -43,6 +43,27 @@
         app:layout_constraintStart_toEndOf="@+id/tv_account_id_text"
         app:layout_constraintTop_toBottomOf="@+id/tv_welcome_name" />
 
+
+    <TextView
+        android:id="@+id/tv_email_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_account_id" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Platzhalter email"
+        app:layout_constraintStart_toEndOf="@+id/tv_account_id_text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_account_id" />
+
     <ImageView
         android:id="@+id/iv_image"
         android:layout_width="80dp"
@@ -53,7 +74,7 @@
         android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_account_id" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
 
     <Button
         android:id="@+id/btn_logout"

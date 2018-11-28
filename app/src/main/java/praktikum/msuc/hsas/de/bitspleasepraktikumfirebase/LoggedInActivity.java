@@ -19,15 +19,23 @@ public class LoggedInActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged_in);
 
+        // Get account data
         Bundle extra = getIntent().getExtras();
         GoogleSignInAccount account = extra.getParcelable("user");
 
+        // Get fullname from account
         TextView tvName = findViewById(R.id.tv_welcome_name);
         tvName.setText(" " + account.getDisplayName());
 
+        // Get accountid
         TextView tvAccountId = findViewById(R.id.tv_account_id);
         tvAccountId.setText(account.getId());
 
+        // Get emailaddress
+        TextView tvEmail = findViewById(R.id.tv_email);
+        tvEmail.setText(account.getEmail());
+
+        // Get profilepic
         if(account.getPhotoUrl() != null){
             ImageView iv_profilePic = findViewById(R.id.iv_image);
             Log.d("Imagepath:", "path: " + account.getPhotoUrl());
@@ -35,6 +43,7 @@ public class LoggedInActivity extends AppCompatActivity implements View.OnClickL
             Object[] object=new Object[2];
             object[0] = iv_profilePic;
             object[1] = account.getPhotoUrl();
+            // download pic asynchron
             DownloadProfilePicTask dppt = new DownloadProfilePicTask();
             dppt.execute(object);
         }
@@ -49,9 +58,5 @@ public class LoggedInActivity extends AppCompatActivity implements View.OnClickL
             finish();
         }
     }
-
-
-
-
 }
 
